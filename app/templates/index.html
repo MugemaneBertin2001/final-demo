@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 id="heading">Student Information Form</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('submit') }}" method="POST" id="studentForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="paid_tuition_fees">Paid Tuition Fees:</label>
+                    <select id="paid_tuition_fees" name="paid_tuition_fees">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="admission_grade">Admission Grade:</label>
+                    <input type="number" id="admission_grade" name="admission_grade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age_at_admission">Age at Admission:</label>
+                    <input type="number" id="age_at_admission" name="age_at_admission" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <select id="course" name="course">
+                        <option value="11">Multimedia</option>
+                        <option value="14">Tourism</option>
+                        <option value="2">Computer Science</option>
+                        <option value="9">Journalism</option>
+                        <option value="13">Social Service</option>
+                        <option value="10">Management</option>
+                        <option value="12">Nursing</option>
+                        <option value="4">Data Engineering</option>
+                        <option value="7">Electrical</option>
+                        <option value="6">Education</option>
+                        <option value="15">Veterinary</option>
+                        <option value="5">Data Science</option>
+                        <option value="1">Civil Engineering</option>
+                        <option value="8">IT</option>
+                        <option value="0">Agronomy</option>
+                        <option value="3">Data Analytics</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="scholarship_holder">Scholarship Holder:</label>
+                    <select id="scholarship_holder" name="scholarship_holder">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_of_birth">Date of Birth:</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender">
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="application_choice">Application Choice:</label>
+                    <input type="number" id="application_choice" name="application_choice" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="displaced">Displaced:</label>
+                    <select id="displaced" name="displaced">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="debtor">Debtor:</label>
+                    <select id="debtor" name="debtor">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="marital_status">Marital Status:</label>
+                    <select id="marital_status" name="marital_status">
+                        <option value="2">Single</option>
+                        <option value="1">Married</option>
+                        <option value="0">Divorced</option>
+                        <option value="3">Widower</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="country_id">Country ID:</label>
+                    <select id="country_id" name="country_id">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="previous_qualification">Previous Qualification:</label>
+                    <select id="previous_qualification" name="previous_qualification">
+                        <option value="2">A2</option>
+                        <option value="4">TVT</option>
+                        <option value="1">A1</option>
+                        <option value="0">A0</option>
+                        <option value="3">Master's</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="has_special_needs">Has Special Needs:</label>
+                    <select id="has_special_needs" name="has_special_needs">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="attendance_mode">Attendance Mode:</label>
+                    <select id="attendance_mode" name="attendance_mode">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='submitted_info.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Submitted Information</h1>
+        <div class="submitted-info">
+            {% for key, value in form_data.items() %}
+                <div class="info-item">
+                    <strong>{{ key.replace('_', ' ').title() }}:</strong> {{ value }}
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('index') }}" class="btn">Go Back</a>
+    </div>
+</body>
+</html>
