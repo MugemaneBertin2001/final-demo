@@ -4,17 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submitted Information</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='submitted_info.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+        }
+        .submitted-info {
+            font-size: 24px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        /* Styling for "Drop Out" */
+        {% if form_data['prediction'] == 0 %}
+        .submitted-info {
+            background-color: #FF6347; /* Red */
+            color: white;
+        }
+        /* Styling for "Graduated" */
+        {% else %}
+        .submitted-info {
+            background-color: #32CD32; /* Green */
+            color: white;
+        }
+        {% endif %}
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Submitted Information</h1>
         <div class="submitted-info">
-            {% for key, value in form_data.items() %}
-                <div class="info-item">
-                    <strong>{{ key.replace('_', ' ').title() }}:</strong> {{ value }}
-                </div>
-            {% endfor %}
+            {% if form_data['prediction'] == 0 %}
+                Drop Out
+            {% else %}
+                Graduated
+            {% endif %}
         </div>
         <a href="{{ url_for('index') }}" class="btn">Go Back</a>
     </div>
