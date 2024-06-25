@@ -9,15 +9,6 @@
 <body>
     <div class="container">
         <h1 id="heading">Student Information Form</h1>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul class="flashes">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
         <form action="{{ url_for('submit') }}" method="POST" id="studentForm">
             <div class="form-row">
                 <div class="form-group">
@@ -134,8 +125,8 @@
                 <div class="form-group">
                     <label for="attendance_mode">Attendance Mode:</label>
                     <select id="attendance_mode" name="attendance_mode">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                        <option value="1">Day</option>
+                        <option value="0">Night</option>
                     </select>
                 </div>
             </div>

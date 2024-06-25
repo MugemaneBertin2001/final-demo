@@ -12,11 +12,19 @@
             border-radius: 10px;
             margin: 20px auto;
             width: 80%;
+            max-width: 600px; /* Ensure it doesn't get too wide on large screens */
         }
         .submitted-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 24px;
             padding: 20px;
             border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 200px; /* Ensuring minimum height */
+            text-align: center;
         }
         .btn {
             display: inline-block;
@@ -41,15 +49,16 @@
         }
         {% endif %}
     </style>
+    
 </head>
 <body>
     <div class="container">
-        <h1>Submitted Information</h1>
+        <h1>Prediction  Decision</h1>
         <div class="submitted-info">
             {% if form_data['prediction'] == 0 %}
-                Drop Out
+              You are expected to Drop Out
             {% else %}
-                Graduated
+              You are expected to Graduate
             {% endif %}
         </div>
         <a href="{{ url_for('index') }}" class="btn">Go Back</a>
