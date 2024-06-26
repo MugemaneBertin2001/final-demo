@@ -51,10 +51,22 @@ def create_app():
 
 def value_predictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1, -1)
-    with open('app\\static\\model\\model.sav', 'rb') as model_file:
-        loaded_model = joblib.load(model_file)
-    result = loaded_model.predict(to_predict)
-    return result[0]
+    model_path = os.path.join('app', 'static', 'model', 'model.sav')
+    
+    try:
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found at path: {model_path}")
+
+        with open(model_path, 'rb') as model_file:
+            loaded_model = joblib.load(model_file)
+        result = loaded_model.predict(to_predict)
+        return result
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        return "Model file not found. Please ensure the model is correctly uploaded."
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return "An unexpected error occurred. Please try again later."
 
 if __name__ == '__main__':
     app = create_app()
